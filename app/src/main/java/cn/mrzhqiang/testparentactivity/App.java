@@ -3,6 +3,8 @@ package cn.mrzhqiang.testparentactivity;
 import android.app.Application;
 import android.content.Intent;
 
+import cn.mrzhqiang.testparentactivity.service.LogService;
+
 
 public class App extends Application {
 

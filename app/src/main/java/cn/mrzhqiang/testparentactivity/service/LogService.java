@@ -1,4 +1,4 @@
-package cn.mrzhqiang.testparentactivity;
+package cn.mrzhqiang.testparentactivity.service;
 
 import android.app.Activity;
 import android.app.Application;

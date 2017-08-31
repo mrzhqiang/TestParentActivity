@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".LaunchActivity">
+        <!--启动页面，设为singleTask时，如果需要退出登录，可以先回到启动页，然后打开登录页面；-->
+        <activity
+            android:name=".launch.LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,23 +21,28 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity">
+        <activity
+            android:name=".login.LoginActivity"
+            android:label="登录页面"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionbar">
 
         </activity>
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".main.MainActivity"
+            android:launchMode="singleTask"
+            android:label="主页">
 
         </activity>
 
-        <receiver
-            android:name=".AccountStateReceiver"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="cn.mrzhqiang.test_LOGIN"/>
-                <action android:name="cn.mrzhqiang.test_LOGOUT"/>
-            </intent-filter>
-        </receiver>
+        <activity android:name=".other.MessageActivity"
+            android:label="消息页面"/>
 
+        <activity android:name=".other.ChatActivity"
+            android:label="聊天页面"/>
+
+        <service android:name=".service.LogService"/>
     </application>
 
 </manifest>

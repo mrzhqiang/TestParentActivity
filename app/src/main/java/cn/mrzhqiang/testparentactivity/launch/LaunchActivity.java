@@ -1,6 +1,8 @@
-package cn.mrzhqiang.testparentactivity;
+package cn.mrzhqiang.testparentactivity.launch;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +10,10 @@ import android.widget.TextView;
 
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+
+import cn.mrzhqiang.testparentactivity.main.MainActivity;
+import cn.mrzhqiang.testparentactivity.R;
+import cn.mrzhqiang.testparentactivity.login.LoginActivity;
 
 public class LaunchActivity extends AppCompatActivity {
     private static final long FUTURE = TimeUnit.SECONDS.toMillis(3);
@@ -23,12 +29,13 @@ public class LaunchActivity extends AppCompatActivity {
         @Override
         public void onFinish() {
             content.setText("准备启动..");
-            int random = (int) (1 + Math.random() * 2);
-            if (random % 2 == 0) {
+            SharedPreferences sp = getSharedPreferences("accountInfo", Context.MODE_PRIVATE);
+            if (!sp.getBoolean("status", false)) {
                 startActivity(new Intent(LaunchActivity.this, LoginActivity.class));
             } else {
                 startActivity(new Intent(LaunchActivity.this, MainActivity.class));
             }
+            finish();
         }
     };
 
@@ -40,12 +47,6 @@ public class LaunchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         content = ((TextView) findViewById(R.id.content));
         content.setText("启动页");
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-
     }
 
     @Override
@@ -62,11 +63,6 @@ public class LaunchActivity extends AppCompatActivity {
         if (timer != null) {
             timer.cancel();
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
     @Override
