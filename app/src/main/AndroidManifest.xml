@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="cn.mrzhqiang.testparentactivity">
 
     <application
@@ -31,16 +32,25 @@
 
         <activity
             android:name=".main.MainActivity"
-            android:launchMode="singleTask"
-            android:label="主页">
+            android:label="主页"
+            android:launchMode="singleTask">
 
         </activity>
 
-        <activity android:name=".other.MessageActivity"
+        <activity
+            android:name=".other.MessageActivity"
             android:label="消息页面"/>
 
-        <activity android:name=".other.ChatActivity"
-            android:label="聊天页面"/>
+        <activity
+            android:name=".other.ChatActivity"
+            android:parentActivityName=".other.MessageActivity"
+            android:label="聊天页面"
+            tools:targetApi="jelly_bean">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cn.mrzhqiang.testparentactivity.other.MessageActivity">
+            </meta-data>
+        </activity>
 
         <service android:name=".service.LogService"/>
     </application>

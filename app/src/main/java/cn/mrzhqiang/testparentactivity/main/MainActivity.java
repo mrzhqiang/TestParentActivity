@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import cn.mrzhqiang.testparentactivity.R;
 import cn.mrzhqiang.testparentactivity.login.LoginActivity;
+import cn.mrzhqiang.testparentactivity.other.ChatActivity;
 import cn.mrzhqiang.testparentactivity.other.MessageActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         (findViewById(R.id.content)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ComponentName componentName = new ComponentName(MainActivity.this, MessageActivity.class);
+                ComponentName componentName = new ComponentName(MainActivity.this, ChatActivity.class);
                 Intent intent = new Intent();
                 intent.setComponent(componentName);
                 startActivity(intent);
